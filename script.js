@@ -130,11 +130,8 @@ fileInput.addEventListener('change', (e) => {
 });
 
 // Form validation and submission
-applicationForm.addEventListener('submit', (e) => {
+applicationForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    // Get form data
-    const formData = new FormData(applicationForm);
 
     // Validate checkboxes
     const checkboxes = document.querySelectorAll('input[name="seeking"]:checked');
@@ -143,51 +140,41 @@ applicationForm.addEventListener('submit', (e) => {
         return;
     }
 
-    // Collect seeking values
-    const seekingValues = Array.from(checkboxes).map(cb => cb.value);
+    // Get form data
+    const formData = new FormData(applicationForm);
 
-    // Create data object
-    const data = {
-        fullName: formData.get('fullName'),
-        email: formData.get('email'),
-        phone: formData.get('phone'),
-        country: formData.get('country'),
-        businessName: formData.get('businessName'),
-        industry: formData.get('industry'),
-        businessStage: formData.get('businessStage'),
-        description: formData.get('description'),
-        seeking: seekingValues,
-        hasPitchDeck: fileInput.files.length > 0
-    };
+    // Submit to Formspree
+    try {
+        const response = await fetch('https://formspree.io/f/mzddozby', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
 
-    // Log the data (in production, send to server)
-    console.log('Form submitted:', data);
+        if (response.ok) {
+            // Show success modal
+            successModal.classList.add('active');
 
-    // Show success modal
-    successModal.classList.add('active');
-
-    // Reset form
-    applicationForm.reset();
-    fileUploadLabel.textContent = 'Click to upload or drag and drop';
-    fileUploadLabel.style.color = '';
-
-    // In production, you would send this to your backend:
-    // fetch('/api/applications', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(data)
-    // })
-    // .then(response => response.json())
-    // .then(result => {
-    //     successModal.classList.add('active');
-    //     applicationForm.reset();
-    // })
-    // .catch(error => {
-    //     alert('There was an error submitting your application. Please try again.');
-    //     console.error('Error:', error);
-    // });
+            // Reset form
+            applicationForm.reset();
+            fileUploadLabel.textContent = 'Click to upload or drag and drop';
+            fileUploadLabel.style.color = '';
+            
+            console.log('Form submitted successfully to Formspree');
+        } else {
+            const data = await response.json();
+            if (data.errors) {
+                alert('Oops! There was a problem submitting your form: ' + data.errors.map(error => error.message).join(', '));
+            } else {
+                alert('Oops! There was a problem submitting your form. Please try again.');
+            }
+        }
+    } catch (error) {
+        alert('There was an error submitting your application. Please check your internet connection and try again.');
+        console.error('Error:', error);
+    }
 });
 
 // Close modal
