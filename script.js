@@ -18,14 +18,16 @@ window.addEventListener('scroll', () => {
 
 // Mobile menu toggle
 hamburger.addEventListener('click', () => {
+    const isActive = !navMenu.classList.contains('active');
     navMenu.classList.toggle('active');
+    document.body.classList.toggle('menu-open', isActive);
 
-    // Animate hamburger
+    // Animate hamburger to X
     const spans = hamburger.querySelectorAll('span');
-    if (navMenu.classList.contains('active')) {
-        spans[0].style.transform = 'rotate(45deg) translateY(12px)';
+    if (isActive) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
         spans[1].style.opacity = '0';
-        spans[2].style.transform = 'rotate(-45deg) translateY(-12px)';
+        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
     } else {
         spans[0].style.transform = 'none';
         spans[1].style.opacity = '1';
@@ -37,6 +39,7 @@ hamburger.addEventListener('click', () => {
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         navMenu.classList.remove('active');
+        document.body.classList.remove('menu-open');
         const spans = hamburger.querySelectorAll('span');
         spans[0].style.transform = 'none';
         spans[1].style.opacity = '1';
@@ -326,6 +329,7 @@ document.addEventListener('keydown', (e) => {
     // Close mobile menu with Escape key
     if (e.key === 'Escape' && navMenu.classList.contains('active')) {
         navMenu.classList.remove('active');
+        document.body.classList.remove('menu-open');
         const spans = hamburger.querySelectorAll('span');
         spans[0].style.transform = 'none';
         spans[1].style.opacity = '1';
