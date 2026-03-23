@@ -309,6 +309,10 @@
                     <p class="section-subtitle">
                         Complete the form below to be considered for our next monthly pitch session
                     </p>
+                    <p class="section-subtitle">
+                        Selected founders will pitch live to investors and receive funding, mentorship, and potential
+                        long-term backing.
+                    </p>
                 </div>
                 <form class="application-form" id="applicationForm" action="https://formspree.io/f/mzddozby" method="POST">
                     <div class="form-grid">
@@ -342,48 +346,45 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="businessStage">Business Stage <span class="required">*</span></label>
+                        <label for="businessStage">Business Stage (Monthly Revenue in USD) <span class="required">*</span></label>
                         <select id="businessStage" name="businessStage" required>
                             <option value="">Select business stage</option>
-                            <option value="idea">Idea Stage</option>
-                            <option value="startup">Startup (0-2 years)</option>
-                            <option value="early">Early Stage (2-5 years)</option>
-                            <option value="growth">Growth Stage (5+ years)</option>
-                            <option value="established">Established</option>
+                            <option value="idea-stage-pre-revenue">Idea Stage (Pre-revenue)</option>
+                            <option value="pre-revenue-mvp">Pre-revenue (MVP)</option>
+                            <option value="early-traction-0-5k-usd-month">Early Traction ($0 - $5k/month)</option>
+                            <option value="growing-5k-50k-usd-month">Growing ($5k - $50k/month)</option>
+                            <option value="scaling-50k-plus-usd-month">Scaling ($50k+/month)</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="description">Brief Business Description <span class="required">*</span></label>
+                        <label for="description">Brief Business Overview (Max 150 words) <span class="required">*</span></label>
                         <textarea id="description" name="description" required rows="5"
-                            placeholder="Describe your business, what problem you solve, and your unique value proposition..."></textarea>
-                        <span class="form-hint">Tell us what makes your business special</span>
+                            placeholder="What do you do, who do you serve, and how do you make money?"></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="seeking">What You Are Seeking <span class="required">*</span></label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="seeking" value="funding">
-                                <span class="checkbox-custom"></span>
-                                Funding
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="seeking" value="mentorship">
-                                <span class="checkbox-custom"></span>
-                                Mentorship
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="seeking" value="investment">
-                                <span class="checkbox-custom"></span>
-                                Investment
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="seeking" value="partnership">
-                                <span class="checkbox-custom"></span>
-                                Partnership
-                            </label>
-                        </div>
+                        <label for="currentTraction">Current Traction <span class="required">*</span></label>
+                        <textarea id="currentTraction" name="currentTraction" required rows="4"
+                            placeholder="Revenue, users, customers, or any measurable growth (be specific)."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="useOfFunds">How would you use the $5,000 grant? <span class="required">*</span></label>
+                        <textarea id="useOfFunds" name="useOfFunds" required rows="4"
+                            placeholder="Be specific about where the capital will go and expected outcome."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="seeking">What are you seeking from this program? <span class="required">*</span></label>
+                        <textarea id="seeking" name="seeking" required rows="4"
+                            placeholder="Tell us the support, access, or outcomes you want from this program."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="selectionReason">Why should your business be selected? <span class="required">*</span></label>
+                        <textarea id="selectionReason" name="selectionReason" required rows="4"
+                            placeholder="What makes you stand out and why now?"></textarea>
                     </div>
 
                     <div class="form-group">
