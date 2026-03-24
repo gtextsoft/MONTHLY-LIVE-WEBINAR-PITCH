@@ -341,6 +341,6 @@ document.addEventListener('keydown', (e) => {
 // CONSOLE MESSAGE
 // ============================================
 
-console.log('%c🚀 Monthly Live Webinar Pitch', 'font-size: 20px; font-weight: bold; color: #2563eb;');
+console.log('%c🚀 Saci Holdings Live Startup Pitch', 'font-size: 20px; font-weight: bold; color: #2563eb;');
 console.log('%cWelcome to the platform! Ready to pitch your business?', 'font-size: 14px; color: #64748b;');
 console.log('%c💡 Form submissions are logged to console in development mode', 'font-size: 12px; color: #f59e0b; font-style: italic;');
