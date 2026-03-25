@@ -136,10 +136,9 @@ fileInput.addEventListener('change', (e) => {
 applicationForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Validate checkboxes
-    const checkboxes = document.querySelectorAll('input[name="seeking"]:checked');
-    if (checkboxes.length === 0) {
-        alert('Please select at least one option for what you are seeking.');
+    // Validate required fields (browser-native validation, even though we intercept submit).
+    if (!applicationForm.checkValidity()) {
+        applicationForm.reportValidity();
         return;
     }
 
