@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/spectate",
+      "destination": "https://meet.zoho.com/llcl-kpn-iox",
+      "permanent": false
+    },
+    {
+      "source": "/spectate/",
+      "destination": "https://meet.zoho.com/llcl-kpn-iox",
+      "permanent": false
+    }
+  ]
+}

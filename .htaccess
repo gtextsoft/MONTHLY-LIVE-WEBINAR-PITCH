@@ -1,0 +1,5 @@
+# Apache / cPanel: redirect /spectate to the live webinar (enable mod_rewrite if needed)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^spectate/?$ https://meet.zoho.com/llcl-kpn-iox [R=302,L]
+</IfModule>
